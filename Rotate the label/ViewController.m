@@ -16,13 +16,35 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
-}
+    
+    UIButton *rotate = [UIButton buttonWithType:UIButtonTypeCustom];
+    rotate.frame = CGRectMake(100, 100, 45, 38);
+    [rotate setTitle:@"8.5折" forState:UIControlStateNormal];
+    [rotate setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    rotate.titleLabel.textAlignment = NSTextAlignmentCenter;
+    rotate.titleLabel.font = [UIFont systemFontOfSize:9];
+    rotate.titleLabel.transform =  CGAffineTransformMakeRotation(M_PI_4);
+    rotate.titleLabel.adjustsFontSizeToFitWidth = YES;
+    rotate.backgroundColor = [UIColor cyanColor];
+    [rotate.titleLabel sizeToFit];
+    //添加button的背景图
+    [rotate setBackgroundImage:[UIImage imageNamed:@"标签"] forState:UIControlStateNormal];
+    rotate.titleEdgeInsets = UIEdgeInsetsMake(-13, 5, -5, -10);
+    [self.view addSubview:rotate];
+    
+    
+    UIView *rotateView = [[UIView alloc]initWithFrame:CGRectMake(100, 200, 45, 45)];
+    rotateView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"标签 (1)"]];
+    [self.view addSubview:rotateView];
+    UILabel *rotateLab = [[UILabel alloc]init];
+    rotateLab.frame = CGRectMake(-5, 0, 45, 38);
+    rotateLab.textAlignment = NSTextAlignmentCenter;
+    rotateLab.transform = CGAffineTransformMakeRotation(-M_PI_4);
+    rotateLab.text = @"7.5折";
+    rotateLab.font = [UIFont systemFontOfSize:9];
+    rotateLab.textColor = [UIColor whiteColor];
 
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    [rotateView addSubview:rotateLab];
 }
 
 
